@@ -1,12 +1,13 @@
+%define		_rc	rc5
 Summary:	Unix port of eMule client
 Summary(pl):	Uniksowy port klienta eMule
 Name:		aMule
-Version:	1.2.6
-Release:	2
+Version:	2.0.0
+Release:	0.%{_rc}.1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://download.berlios.de/amule/%{name}-%{version}.tar.bz2
-# Source0-md5:	bcd30926d68f4f54dc9c3799f8cde070
+Source0:	http://download.berlios.de/amule/%{name}-%{version}%{_rc}.tar.bz2
+# Source0-md5:	c701db7489b98424a5eb652bd28eaa4d
 Patch0: 	%{name}-po_makefile.patch
 URL:		http://developer.berlios.de/projects/amule/
 BuildRequires:	autoconf
@@ -31,7 +32,7 @@ aMule is a Linux port of eMule client.
 aMule to linuksowy port klienta eMule.
 
 %prep
-%setup  -q
+%setup  -q -n %{name}-%{version}%{_rc}
 %patch0 -p1
 
 %build
