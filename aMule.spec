@@ -14,7 +14,7 @@ BuildRequires:	bison
 BuildRequires:	gettext-devel >= 0.11.5
 BuildRequires:	expat-devel
 BuildRequires:	wxGTK2-devel >= 2.4.0
-BuildRequires:	gtk2+-devel >= 2.2.0
+BuildRequires:	gtk+2-devel >= 2.2.0
 BuildRequires:	libstdc++-devel
 Requires:	wget
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -31,7 +31,7 @@ aMule to linuksowy port klienta eMule.
 %build
 
 %configure \
-	--with-wx-config=/usr/bin/wxgtk-2.4-config 
+	--with-wx-config=/usr/bin/wxgtk2-2.4-config 
 
 %{__make}
 
