@@ -12,7 +12,7 @@ Patch0:		%{name}-configure_in.patch
 Patch1:		%{name}-desktop.patch
 URL:		http://www.amule.org/
 BuildRequires:	autoconf
-BuildRequires:	automake >= 1.7.3
+BuildRequires:	automake >= 1:1.7.3
 BuildRequires:	bison
 #BuildRequires:	cryptopp-devel >= 5.1
 BuildRequires:	curl-devel >= 7.9.7
