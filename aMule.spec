@@ -3,13 +3,13 @@ Summary:	Unix port of eMule client
 Summary(pl):	Uniksowy port klienta eMule
 Name:		aMule
 Version:	2.0.0
-Release:	0.%{_rc}.1
+Release:	0.%{_rc}.2
 License:	GPL
 Group:		X11/Applications
 Source0:	http://download.berlios.de/amule/%{name}-%{version}%{_rc}.tar.gz
 # Source0-md5:	b62106da3c38be29314a542aa3d20e95
-# Source0-size:	2491155
 Patch0:		%{name}-configure_in.patch
+Patch1:		%{name}-desktop.patch
 URL:		http://www.amule.org/
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1.7.3
@@ -20,11 +20,11 @@ BuildRequires:	expat-devel
 BuildRequires:	gettext-devel >= 0.11.5
 BuildRequires:	gtk+2-devel >= 2.2.0
 BuildRequires:	libstdc++-devel
-BuildRequires:	wxGTK2-devel >= 2.4.0
 BuildRequires:	wxBase-devel >= 2.4.0
+BuildRequires:	wxGTK2-devel >= 2.4.0
 Requires:	wget
-Obsoletes:	xmule
 Obsoletes:	lmule
+Obsoletes:	xmule
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -36,6 +36,7 @@ aMule to linuksowy port klienta eMule.
 %prep
 %setup -q -n %{name}-%{version}%{_rc}
 %patch0 -p1
+%patch1 -p1
 
 %build
 rm -r autom4te.cache
