@@ -1,14 +1,14 @@
-%define		_rc	rc5
+%define		_rc	rc6
 Summary:	Unix port of eMule client
 Summary(pl):	Uniksowy port klienta eMule
 Name:		aMule
 Version:	2.0.0
-Release:	0.%{_rc}.3
+Release:	0.%{_rc}.1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://download.berlios.de/amule/%{name}-%{version}%{_rc}.tar.bz2
-# Source0-md5:	c701db7489b98424a5eb652bd28eaa4d
-Patch0: 	%{name}-po_makefile.patch
+Source0:	http://download.berlios.de/amule/%{name}-%{version}%{_rc}.tar.gz
+# Source0-md5:	c05aac05c39f5a681f2fe4a22dd30426
+Patch0:		%{name}-configure_in.patch
 URL:		http://developer.berlios.de/projects/amule/
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1.7.3
@@ -61,7 +61,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f amule.lang
 %defattr(644,root,root,755)
-%doc docs/AUTHORS docs/README docs/Changelog docs/ED2K-Links.HOWTO docs/TODO docs/eMule-Imports-Status docs/amulesig.txt
+%doc docs/AUTHORS docs/README docs/Changelog docs/ED2K-Links.HOWTO docs/TODO docs/amulesig.txt
 %attr(755,root,root) %{_bindir}/*
 %{_desktopdir}/*
 %{_pixmapsdir}/*
