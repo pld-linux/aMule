@@ -1,4 +1,4 @@
-%define		_rc	rc7
+%define		_rc	rc8
 Summary:	Unix port of eMule client
 Summary(pl):	Uniksowy port klienta eMule
 Name:		aMule
@@ -7,7 +7,7 @@ Release:	0.%{_rc}.2
 License:	GPL
 Group:		X11/Applications
 Source0:	http://download.berlios.de/amule/%{name}-%{version}%{_rc}.tar.gz
-# Source0-md5:	b62106da3c38be29314a542aa3d20e95
+# Source0-md5:	764c8cc47ffbc29bbe8e568cec09e00b
 Patch0:		%{name}-configure_in.patch
 Patch1:		%{name}-desktop.patch
 URL:		http://www.amule.org/
