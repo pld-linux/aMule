@@ -56,7 +56,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f amule.lang
 %defattr(644,root,root,755)
-%doc AUTHORS docs/README docs/Changelog docs/ED2K-Links.HOWT docs/TODO docs/eMule-Imports-Status docs/amulesig.txt
+%doc AUTHORS docs/README docs/Changelog docs/ED2K-Links.HOWTO docs/TODO docs/eMule-Imports-Status docs/amulesig.txt
 %attr(755,root,root) %{_bindir}/*
 %{_desktopdir}/*
 %{_pixmapsdir}/*
