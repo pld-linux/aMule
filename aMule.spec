@@ -17,8 +17,10 @@ BuildRequires:	bison
 #BuildRequires:	cryptopp-devel >= 5.1
 BuildRequires:	curl-devel >= 7.9.7
 BuildRequires:	expat-devel
+BuildRequires:	gd-devel
 BuildRequires:	gettext-devel >= 0.11.5
 BuildRequires:	gtk+2-devel >= 2:2.2.0
+BuildRequires:	libpng-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	wxBase-devel >= 2.4.0
 BuildRequires:	wxGTK2-devel >= 2.4.0
@@ -45,8 +47,12 @@ aMule to linuksowy port klienta eMule.
 %{__autoheader}
 %{__automake}
 %configure \
-	--with-wx-config=/usr/bin/wxgtk2-2.4-config \
-	--enable-optimise
+	--with-wx-config=/usr/bin/wxgtk2-2.4-config	\
+	--enable-optimise				\
+	--enable-amulecmd				\
+	--enable-amulecmdgui				\
+	--enable-webserver				\
+	--enable-webservergui
 
 %{__make}
 
@@ -55,6 +61,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+	
+mv $RPM_BUILD_ROOT/%{_docdir}/%{name}-%{version}%{_rc}	\
+    $RPM_BUILD_ROOT/%{_docdir}/%{name}-%{version}
 
 %find_lang amule
 
@@ -67,3 +76,5 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %{_desktopdir}/*
 %{_pixmapsdir}/*
+%{_datadir}/amuleweb
+%{_datadir}/cas/*
