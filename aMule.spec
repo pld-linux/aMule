@@ -12,6 +12,7 @@ URL:		http://amule.sourceforge.net
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1.7.3
 BuildRequires:	bison
+BuildRequires:	curl-devel >= 7.9.7
 BuildRequires:	expat-devel
 BuildRequires:	gettext-devel >= 0.11.5
 BuildRequires:	gtk+2-devel >= 2.2.0
