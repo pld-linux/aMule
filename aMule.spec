@@ -20,6 +20,8 @@ BuildRequires:	libstdc++-devel
 BuildRequires:	wxGTK2-devel >= 2.4.0
 BuildRequires:	wxBase-devel >= 2.4.0
 Requires:	wget
+Obsoletes:      xmule
+Obsoletes:      lmule
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
