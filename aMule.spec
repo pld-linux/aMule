@@ -1,8 +1,8 @@
 Summary:	Unix port of eMule client
 Summary(pl):	Uniksowy port klienta eMule
 Name:		aMule
-Version:	1.0.0
-Release:	0.1
+Version:	1.0.5
+Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/amule/%{name}-%{version}.tar.bz2
@@ -13,17 +13,17 @@ BuildRequires:	automake >= 1.7.3
 BuildRequires:	bison
 BuildRequires:	gettext-devel >= 0.11.5
 BuildRequires:	expat-devel
-BuildRequires:	wxGTK-devel >= 2.4.0
-BuildRequires:	gtk+-devel >= 1.2.0
+BuildRequires:	wxGTK2-devel >= 2.4.0
+BuildRequires:	gtk2+-devel >= 2.2.0
 BuildRequires:	libstdc++-devel
 Requires:	wget
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-xMule is a Linux port of eMule client.
+aMule is a Linux port of eMule client.
 
 %description -l pl
-xMule to linuksowy port klienta eMule.
+aMule to linuksowy port klienta eMule.
 
 %prep
 %setup  -q
@@ -46,5 +46,5 @@ rm -rf $RPM_BUILD_ROOT
 
 %files 
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog README TODO
+%doc AUTHORS Changelog ED2K-Links.HOWTO README TODO
 %attr(755,root,root) %{_bindir}/*
