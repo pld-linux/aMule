@@ -23,8 +23,8 @@ BuildRequires:	libstdc++-devel
 BuildRequires:	wxGTK2-devel >= 2.4.0
 BuildRequires:	wxBase-devel >= 2.4.0
 Requires:	wget
-Obsoletes:      xmule
-Obsoletes:      lmule
+Obsoletes:	xmule
+Obsoletes:	lmule
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -34,7 +34,7 @@ aMule is a Linux port of eMule client.
 aMule to linuksowy port klienta eMule.
 
 %prep
-%setup  -q -n %{name}-%{version}%{_rc}
+%setup -q -n %{name}-%{version}%{_rc}
 %patch0 -p1
 
 %build
