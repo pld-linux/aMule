@@ -1,12 +1,12 @@
 Summary:	Unix port of eMule client
 Summary(pl):	Uniksowy port klienta eMule
 Name:		aMule
-Version:	1.0.5
+Version:	1.0.6
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/amule/%{name}-%{version}.tar.bz2
-# Source0-md5:	92c197614ff08ee554e23efe8865e474
+# Source0-md5:	a008de23a3a97244fe1924c449339108
 URL:		http://amule.sourceforge.net
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1.7.3
@@ -44,7 +44,9 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files 
+%find_lang %{name}
+
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS Changelog ED2K-Links.HOWTO README TODO
 %attr(755,root,root) %{_bindir}/*
