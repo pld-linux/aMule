@@ -18,7 +18,6 @@ BuildRequires:	gtk+2-devel >= 2.2.0
 BuildRequires:	libstdc++-devel
 BuildRequires:	wxGTK2-devel >= 2.4.0
 BuildRequires:	wxBase-devel >= 2.4.0
-BuildRequires:	wxBase >= 2.4.0
 Requires:	wget
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
