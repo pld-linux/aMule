@@ -5,10 +5,10 @@ Version:	1.2.6
 Release:	1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://dl.sourceforge.net/amule/%{name}-%{version}.tar.bz2
+Source0:	http://download.berlios.de/amule/%{name}-%{version}.tar.bz2
 # Source0-md5:	bcd30926d68f4f54dc9c3799f8cde070
 Patch0: 	%{name}-po_makefile.patch
-URL:		http://amule.sourceforge.net
+URL:		http://developer.berlios.de/projects/amule/
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1.7.3
 BuildRequires:	bison
