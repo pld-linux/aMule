@@ -13,6 +13,7 @@ URL:		http://developer.berlios.de/projects/amule/
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1.7.3
 BuildRequires:	bison
+BuildRequires:	cryptopp-devel >= 5.1
 BuildRequires:	curl-devel >= 7.9.7
 BuildRequires:	expat-devel
 BuildRequires:	gettext-devel >= 0.11.5
@@ -20,8 +21,6 @@ BuildRequires:	gtk+2-devel >= 2.2.0
 BuildRequires:	libstdc++-devel
 BuildRequires:	wxGTK2-devel >= 2.4.0
 BuildRequires:	wxBase-devel >= 2.4.0
-BuildRequires:	cryptopp-devel >= 5.1
-BuildRequires:	libidn-devel >= 0.5.3
 Requires:	wget
 Obsoletes:      xmule
 Obsoletes:      lmule
