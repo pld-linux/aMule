@@ -6,7 +6,7 @@ Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/amule/%{name}-%{version}.tar.bz2
-# Source0-md5:	61c0b03236a740f916d50e83c1fb6bbd
+# Source0-md5:	92c197614ff08ee554e23efe8865e474
 URL:		http://amule.sourceforge.net
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1.7.3
