@@ -39,7 +39,7 @@ aMule to linuksowy port klienta eMule.
 %patch1 -p1
 
 %build
-rm -r autom4te.cache
+#rm -r autom4te.cache
 %{__gettextize}
 %{__aclocal} -I m4
 %{__autoconf}
