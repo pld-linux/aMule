@@ -70,5 +70,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc docs/AUTHORS docs/README docs/Changelog docs/ED2K-Links.HOWTO docs/TODO docs/amulesig.txt
 %attr(755,root,root) %{_bindir}/*
+%{_mandir}/man1/*
 %{_desktopdir}/*
 %{_pixmapsdir}/*
+%{_datadir}/webserver
