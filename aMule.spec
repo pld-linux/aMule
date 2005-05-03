@@ -47,7 +47,7 @@ aMule to linuksowy port klienta eMule.
 %{__autoheader}
 %{__automake}
 %configure \
-	--with-wx-config=/usr/bin/wxgtk2-2.4-config	\
+##	--with-wx-config=/usr/bin/wxgtk2-2.4-config	\
 	--enable-optimise				\
 	--enable-amulecmd				\
 	--enable-amulecmdgui				\
