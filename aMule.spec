@@ -46,12 +46,12 @@ aMule to linuksowy port klienta eMule.
 %{__autoheader}
 %{__automake}
 %configure \
-	--with-wx-config=/usr/bin/wx-gtk2-ansi-config	\
+	--with-wx-config=%{_bindir}/wx-gtk2-ansi-config	\
 	--enable-optimise				\
 	--enable-amulecmd				\
 	--enable-amulecmdgui				\
 	--enable-webserver				\
-	--enable-webservergui				
+	--enable-webservergui
 
 %{__make}
 
@@ -60,7 +60,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
-	
+
 %find_lang amule
 
 %clean
@@ -73,4 +73,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 %{_desktopdir}/*
 %{_pixmapsdir}/*
-%{_datadir}/webserver
+%{_datadir}/amule/webserver
