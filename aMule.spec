@@ -21,8 +21,8 @@ BuildRequires:	gettext-devel >= 0.11.5
 BuildRequires:	gtk+2-devel >= 2:2.2.0
 BuildRequires:	libpng-devel
 BuildRequires:	libstdc++-devel
-BuildRequires:	wxBase-devel >= 2.4.2
-BuildRequires:	wxGTK2-devel >= 2.4.2
+BuildRequires:	wxBase-devel >= 2.6.0
+BuildRequires:	wxGTK2-devel >= 2.6.0
 Requires:	wget
 Obsoletes:	lmule
 Obsoletes:	xmule
@@ -46,7 +46,7 @@ aMule to linuksowy port klienta eMule.
 %{__autoheader}
 %{__automake}
 %configure \
-	--with-wx-config=/usr/bin/wxgtk2-2.4-config	\
+	--with-wx-config=/usr/bin/wx-gtk2-ansi-config	\
 	--enable-optimise				\
 	--enable-amulecmd				\
 	--enable-amulecmdgui				\
