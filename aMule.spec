@@ -23,7 +23,6 @@ BuildRequires:	libpng-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	wxBase-devel >= 2.4.2
 BuildRequires:	wxGTK2-devel >= 2.4.2
-BuildRequires:	wxWidgets-devel >= 2.4
 Requires:	wget
 Obsoletes:	lmule
 Obsoletes:	xmule
@@ -47,7 +46,7 @@ aMule to linuksowy port klienta eMule.
 %{__autoheader}
 %{__automake}
 %configure \
-##	--with-wx-config=/usr/bin/wxgtk2-2.4-config	\
+	--with-wx-config=/usr/bin/wxgtk2-2.4-config	\
 	--enable-optimise				\
 	--enable-amulecmd				\
 	--enable-amulecmdgui				\
