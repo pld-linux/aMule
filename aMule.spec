@@ -9,6 +9,7 @@ Source0:	http://download.berlios.de/amule/%{name}-%{version}.tar.gz
 # Source0-md5:	e6680641e171ddf4236c955168947ba0
 Patch0:		%{name}-configure_in.patch
 Patch1:		%{name}-desktop.patch
+Patch2:		%{name}-cas-datadir.patch
 URL:		http://www.amule.org/
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.7.3
@@ -38,6 +39,7 @@ aMule to linuksowy port klienta eMule.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %{__gettextize}
@@ -47,11 +49,17 @@ aMule to linuksowy port klienta eMule.
 %{__automake}
 %configure \
 	--with-wx-config=%{_bindir}/wx-gtk2-ansi-config	\
+	--%{?debug:en}%{!?debug:dis}able-debug		\
 	--enable-optimise				\
+	--enable-amule-daemon				\
 	--enable-amulecmd				\
 	--enable-amulecmdgui				\
 	--enable-webserver				\
-	--enable-webservergui
+	--enable-webservergui				\
+	--enable-cas					\
+	--enable-wxcas					\
+	--enable-alc					\
+	--enable-alcc
 
 %{__make}
 
@@ -70,7 +78,12 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc docs/AUTHORS docs/README docs/Changelog docs/ED2K-Links.HOWTO docs/TODO docs/amulesig.txt
 %attr(755,root,root) %{_bindir}/*
+%lang(de) %{_mandir}/de/man1/*
+%lang(es) %{_mandir}/es/man1/*
+%lang(fr) %{_mandir}/fr/man1/*
+%lang(hu) %{_mandir}/hu/man1/*
 %{_mandir}/man1/*
 %{_desktopdir}/*
 %{_pixmapsdir}/*
+%{_datadir}/amule/cas
 %{_datadir}/amule/webserver
