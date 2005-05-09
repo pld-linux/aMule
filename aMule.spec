@@ -1,3 +1,8 @@
+#
+# TODO:
+# - split into subpackages
+# - package %{_libdir}/xchat/plugins/xas.pl
+#
 Summary:	Unix port of eMule client
 Summary(pl):	Uniksowy port klienta eMule
 Name:		aMule
