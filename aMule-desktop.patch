@@ -13,4 +13,4 @@ diff -urN aMule-2.0.0rc7.orig/amule.desktop aMule-2.0.0rc7/amule.desktop
  Type=Application
 -Categories=Application;Network;
 +Categories=GTK;Network;P2P;
-+Encoding=UTF-8;
++Encoding=UTF-8
