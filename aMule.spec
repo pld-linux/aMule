@@ -146,10 +146,12 @@ rm -rf $RPM_BUILD_ROOT
 %lang(hu) %{_mandir}/hu/man1/xas*
 
 %files plugin-xchat
+%defattr(644,root,root,755)
 %{_libdir}/xchat/plugins/xas.pl
 
 %files alc
-%{_bindir}/alc*
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/alc*
 %{_desktopdir}/alc.desktop
 %{_pixmapsdir}/alc.xpm
 %{_mandir}/man1/alc*
@@ -158,9 +160,9 @@ rm -rf $RPM_BUILD_ROOT
 %lang(fr) %{_mandir}/fr/man1/alc*
 %lang(hu) %{_mandir}/hu/man1/alc*
 
-
 %files cas
-%{_bindir}/*cas
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/*cas
 %{_datadir}/amule/cas
 %{_desktopdir}/*cas.desktop
 %{_pixmapsdir}/wxcas.xpm
