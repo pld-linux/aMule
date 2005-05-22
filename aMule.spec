@@ -2,6 +2,7 @@
 # TODO:
 # - split into subpackages
 # - package %{_libdir}/xchat/plugins/xas.pl
+# - depends on binutils, why?
 #
 Summary:	Unix port of eMule client
 Summary(pl):	Uniksowy port klienta eMule
