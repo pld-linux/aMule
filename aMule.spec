@@ -25,6 +25,7 @@ BuildRequires:	curl-devel >= 7.9.7
 BuildRequires:	expat-devel
 BuildRequires:	gd-devel
 BuildRequires:	gettext-devel >= 0.11.5
+BuildRequires:	gettext-autopoint
 BuildRequires:	gtk+2-devel >= 2:2.2.0
 BuildRequires:	libpng-devel
 BuildRequires:	libstdc++-devel
