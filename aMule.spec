@@ -65,7 +65,7 @@ Provides:	alc
 %description alc
 Tool for creating ed2k links.
 
-%description -l pl alc
+%description alc -l pl
 Narzêdzie do tworzenia linków ed2k.
 
 %package cas
@@ -78,7 +78,7 @@ Provides:	cas
 %description cas
 Tool for generating aMule online stats.
 
-%description -l cas
+%description cas -l pl
 Narzêdzie do generownia statystyk aMule.
 
 %prep
@@ -127,7 +127,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc docs/AUTHORS docs/README docs/Changelog docs/ED2K-Links.HOWTO docs/TODO docs/amulesig.txt
 %attr(755,root,root) %{_bindir}/amule*
-%{_bindir}/ed2k
+%attr(755,root,root) %{_bindir}/ed2k
 %dir %{_datadir}/amule
 %{_datadir}/amule/webserver
 %{_desktopdir}/amule.desktop
