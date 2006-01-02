@@ -1,13 +1,10 @@
-Ugly patch. Avoid strange substitution in CFLAGS/CXXFLAGS. It looks
-like shells different than bash fail on those two lines.
-
-diff -burN aMule-2.0.0rc6.orig/configure.in aMule-2.0.0rc6/configure.in
---- aMule-2.0.0rc6.orig/configure.in	2004-10-06 22:52:06.518677128 +0200
-+++ aMule-2.0.0rc6/configure.in	2004-10-06 22:52:18.590841880 +0200
+diff -ur aMule-2.1.0.org/configure.in aMule-2.1.0/configure.in
+--- aMule-2.1.0.org/configure.in	2006-01-01 23:30:28.000000000 +0100
++++ aMule-2.1.0/configure.in	2006-01-02 22:02:24.636967250 +0100
 @@ -10,8 +10,8 @@
  AM_MAINTAINER_MODE
  
- # No -O2 by default, removing -fomit since it causes problems
+ # Removing -fomit since it causes problems with CryptoPP
 -CFLAGS="`echo $CFLAGS | sed "s/-fomit-frame-pointer//g"`"
 -CXXFLAGS="`echo $CXXFLAGS | sed "s/-fomit-frame-pointer//g"`"
 +#CFLAGS="`echo $CFLAGS | sed "s/-fomit-frame-pointer//g"`"
