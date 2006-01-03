@@ -1,7 +1,5 @@
 #
 # TODO:
-# - split into subpackages
-# - package %{_libdir}/xchat/plugins/xas.pl
 # - depends on binutils, why? 
 #
 Summary:	Unix port of eMule client
@@ -29,8 +27,7 @@ BuildRequires:	gettext-autopoint
 BuildRequires:	gtk+2-devel >= 2:2.2.0
 BuildRequires:	libpng-devel
 BuildRequires:	libstdc++-devel
-BuildRequires:	wxBase-devel >= 2.6.0
-BuildRequires:	wxGTK2-devel >= 2.6.0
+BuildRequires:	wxGTK2-unicode-devel
 Requires:	wget
 Obsoletes:	lmule
 Obsoletes:	xmule
@@ -94,10 +91,11 @@ Narzêdzie do generownia statystyk aMule.
 %{__autoheader}
 %{__automake}
 %configure \
-	--with-wx-config=%{_bindir}/wx-gtk2-ansi-config	\
+	--with-wx-config=wx-gtk2-unicode-config		\
 	--%{?debug:en}%{!?debug:dis}able-debug		\
-	--enable-optimise				\
+	--%{?debug:dis}%{!?debug:en}able-optimize	\
 	--enable-amule-daemon				\
+	--enable-amule-gui				\
 	--enable-amulecmd				\
 	--enable-amulecmdgui				\
 	--enable-webserver				\
@@ -105,7 +103,8 @@ Narzêdzie do generownia statystyk aMule.
 	--enable-cas					\
 	--enable-wxcas					\
 	--enable-alc					\
-	--enable-alcc
+	--enable-alcc					\
+	--enable-kad-compile
 
 %{__make}
 
