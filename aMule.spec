@@ -5,12 +5,12 @@
 Summary:	Unix port of eMule client
 Summary(pl):	Uniksowy port klienta eMule
 Name:		aMule
-Version:	2.1.2
-Release:	2
+Version:	2.1.3
+Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://download.berlios.de/amule/%{name}-%{version}.tar.bz2
-# Source0-md5:	c7629f6d33bc15b50c882323163e728a
+# Source0-md5:	0aafdd159edb8ad5f0064da87998b47d
 Patch0:		%{name}-configure_in.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-cas-datadir.patch
