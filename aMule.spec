@@ -43,8 +43,8 @@ aMule to linuksowy port klienta eMule.
 %package plugin-xchat
 Summary:	Xchat plugin
 Summary(pl):	Wtyczka dla xchat
-Requires:	%{name} = %{version}-%{release}
 Group:		X11/Applications
+Requires:	%{name} = %{version}-%{release}
 Provides:	%{name}-plugin-xchat
 
 %description plugin-xchat
@@ -56,8 +56,8 @@ Wtczka dla klienta IRC xchat.
 %package alc
 Summary:	Ed2k link creator for aMule
 Summary(pl):	Kreator linków ed2k dla aMule
-Requires:	%{name} = %{version}-%{release}
 Group:		X11/Applications
+Requires:	%{name} = %{version}-%{release}
 Provides:	alc
 
 %description alc
@@ -69,8 +69,8 @@ Narzêdzie do tworzenia linków ed2k.
 %package cas
 Summary:	aMule online stats
 Summary(pl):	Statystyki online aMule
-Requires:	%{name} = %{version}-%{release}
 Group:		X11/Applications
+Requires:	%{name} = %{version}-%{release}
 Provides:	cas
 
 %description cas
