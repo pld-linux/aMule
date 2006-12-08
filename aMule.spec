@@ -1,12 +1,11 @@
-#
 # TODO:
-# - depends on binutils, why? 
+# - depends on binutils, why?
 #
 Summary:	Unix port of eMule client
 Summary(pl):	Uniksowy port klienta eMule
 Name:		aMule
 Version:	2.1.3
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications
 Source0:	http://download.berlios.de/amule/%{name}-%{version}.tar.bz2
@@ -22,8 +21,8 @@ BuildRequires:	bison
 BuildRequires:	curl-devel >= 7.9.7
 BuildRequires:	expat-devel
 BuildRequires:	gd-devel
-BuildRequires:	gettext-devel >= 0.11.5
 BuildRequires:	gettext-autopoint
+BuildRequires:	gettext-devel >= 0.11.5
 BuildRequires:	gtk+2-devel >= 2:2.2.0
 BuildRequires:	libpng-devel
 BuildRequires:	libstdc++-devel
@@ -42,8 +41,9 @@ aMule to linuksowy port klienta eMule.
 %package plugin-xchat
 Summary:	Xchat plugin
 Summary(pl):	Wtyczka dla xchat
-Requires:	%{name} = %{version}-%{release}
 Group:		X11/Applications
+Requires:	%{name} = %{version}-%{release}
+Requires:	xchat
 Provides:	%{name}-plugin-xchat
 
 %description plugin-xchat
@@ -55,8 +55,8 @@ Wtczka dla klienta IRC xchat.
 %package alc
 Summary:	Ed2k link creator for aMule
 Summary(pl):	Kreator linków ed2k dla aMule
-Requires:	%{name} = %{version}-%{release}
 Group:		X11/Applications
+Requires:	%{name} = %{version}-%{release}
 Provides:	alc
 
 %description alc
@@ -68,8 +68,8 @@ Narzêdzie do tworzenia linków ed2k.
 %package cas
 Summary:	aMule online stats
 Summary(pl):	Statystyki online aMule
-Requires:	%{name} = %{version}-%{release}
 Group:		X11/Applications
+Requires:	%{name} = %{version}-%{release}
 Provides:	cas
 
 %description cas
