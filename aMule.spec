@@ -6,7 +6,7 @@ Summary:	Unix port of eMule client
 Summary(pl):	Uniksowy port klienta eMule
 Name:		aMule
 Version:	2.1.3
-Release:	5
+Release:	6
 License:	GPL
 Group:		X11/Applications
 Source0:	http://download.berlios.de/amule/%{name}-%{version}.tar.bz2
@@ -14,6 +14,7 @@ Source0:	http://download.berlios.de/amule/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-configure_in.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-cas-datadir.patch
+Patch3:		%{name}-wx.patch
 URL:		http://www.amule.org/
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.7.3
@@ -84,6 +85,7 @@ Narzêdzie do generownia statystyk aMule.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 %{__gettextize}
