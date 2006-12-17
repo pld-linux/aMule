@@ -1,6 +1,15 @@
 diff -urN aMule-2.1.3.org/src/utils/wxCas/src/wxcasprefs.cpp aMule-2.1.3/src/utils/wxCas/src/wxcasprefs.cpp
 --- aMule-2.1.3.org/src/utils/wxCas/src/wxcasprefs.cpp	2005-12-16 13:09:29.000000000 +0100
 +++ aMule-2.1.3/src/utils/wxCas/src/wxcasprefs.cpp	2006-12-17 20:20:47.151203000 +0100
+@@ -297,7 +297,7 @@
+ 	m_validateButton =
+ 	    new wxButton ( this, ID_VALIDATE_BUTTON, wxString ( _( "Validate" ) ) );
+ 	m_cancelButton =
+-	    new wxButton ( this, ID_CANCEL_BUTTON, wxString ( _( "Cancel" ) ) );
++	    new wxButton ( this, wxID_CANCEL, wxString ( _( "Cancel" ) ) );
+ 
+ 	m_buttonHBox->Add ( m_validateButton, 0, wxALIGN_CENTER | wxALL, 5 );
+ 	m_buttonHBox->Add ( m_cancelButton, 0, wxALIGN_CENTER | wxALL, 5 );
 @@ -321,7 +321,6 @@
  EVT_BUTTON ( ID_OSPATH_BROWSE_BUTTON, WxCasPrefs::OnOSPathBrowseButton )
  EVT_BUTTON ( ID_AUTOSTATIMG_BROWSE_BUTTON, WxCasPrefs::OnAutoStatImgBrowseButton )
@@ -9,6 +18,18 @@ diff -urN aMule-2.1.3.org/src/utils/wxCas/src/wxcasprefs.cpp aMule-2.1.3/src/uti
  EVT_CHECKBOX ( ID_AUTOSTATIMG_CHECK, WxCasPrefs::OnAutoStatImgCheck )
  EVT_CHECKBOX ( ID_FTP_UPDATE_CHECK, WxCasPrefs::OnFtpUpdateCheck )
  END_EVENT_TABLE ()
+--- aMule/src/utils/wxCas/src/wxcasprefs.h.org	2006-12-17 22:17:39.017417250 +0100
++++ aMule/src/utils/wxCas/src/wxcasprefs.h	2006-12-17 22:18:17.611829250 +0100
+@@ -101,8 +101,7 @@
+ 	    ID_AUTOSTATIMG_COMBO,
+ 	    ID_AUTOSTATIMG_BROWSE_BUTTON,
+ 	    ID_FTP_UPDATE_CHECK,
+-	    ID_VALIDATE_BUTTON,
+-	    ID_CANCEL_BUTTON
++	    ID_VALIDATE_BUTTON
+ 	};
+ 
+ protected:
 --- aMule/src/MuleGifCtrl.cpp	2006-02-03 20:14:05.000000000 +0100
 +++ aMule/src/MuleGifCtrl.cpp	2006-11-19 19:35:33.000000000 +0100
 @@ -24,7 +24,6 @@
