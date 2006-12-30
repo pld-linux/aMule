@@ -1,7 +1,3 @@
-#
-# TODO:
-# - depends on binutils, why? 
-#
 Summary:	Unix port of eMule client
 Summary(pl):	Uniksowy port klienta eMule
 Name:		aMule
@@ -18,6 +14,7 @@ Patch3:		%{name}-wx.patch
 URL:		http://www.amule.org/
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.7.3
+BuildRequires:	binutils-devel
 BuildRequires:	bison
 #BuildRequires:	cryptopp-devel >= 5.1
 BuildRequires:	curl-devel >= 7.9.7
