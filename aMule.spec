@@ -1,5 +1,5 @@
 Summary:	Unix port of eMule client
-Summary(pl):	Uniksowy port klienta eMule
+Summary(pl.UTF-8):   Uniksowy port klienta eMule
 Name:		aMule
 Version:	2.1.3
 Release:	10
@@ -35,12 +35,12 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 aMule is a Linux port of eMule client.
 
-%description -l pl
+%description -l pl.UTF-8
 aMule to linuksowy port klienta eMule.
 
 %package plugin-xchat
 Summary:	Xchat plugin
-Summary(pl):	Wtyczka dla xchat
+Summary(pl.UTF-8):   Wtyczka dla xchat
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
 Provides:	%{name}-plugin-xchat
@@ -48,12 +48,12 @@ Provides:	%{name}-plugin-xchat
 %description plugin-xchat
 Plugin for Xchat IRC client.
 
-%description plugin-xchat -l pl
+%description plugin-xchat -l pl.UTF-8
 Wtczka dla klienta IRC xchat.
 
 %package alc
 Summary:	Ed2k link creator for aMule
-Summary(pl):	Kreator linków ed2k dla aMule
+Summary(pl.UTF-8):   Kreator linkÃ³w ed2k dla aMule
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
 Provides:	alc
@@ -61,12 +61,12 @@ Provides:	alc
 %description alc
 Tool for creating ed2k links.
 
-%description alc -l pl
-Narzêdzie do tworzenia linków ed2k.
+%description alc -l pl.UTF-8
+NarzÄ™dzie do tworzenia linkÃ³w ed2k.
 
 %package cas
 Summary:	aMule online stats
-Summary(pl):	Statystyki online aMule
+Summary(pl.UTF-8):   Statystyki online aMule
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
 Provides:	cas
@@ -74,8 +74,8 @@ Provides:	cas
 %description cas
 Tool for generating aMule online stats.
 
-%description cas -l pl
-Narzêdzie do generownia statystyk aMule.
+%description cas -l pl.UTF-8
+NarzÄ™dzie do generownia statystyk aMule.
 
 %prep
 %setup -q
