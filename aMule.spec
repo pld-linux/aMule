@@ -1,5 +1,5 @@
 Summary:	Unix port of eMule client
-Summary(pl.UTF-8):   Uniksowy port klienta eMule
+Summary(pl.UTF-8):	Uniksowy port klienta eMule
 Name:		aMule
 Version:	2.1.3
 Release:	10
@@ -40,7 +40,7 @@ aMule to linuksowy port klienta eMule.
 
 %package plugin-xchat
 Summary:	Xchat plugin
-Summary(pl.UTF-8):   Wtyczka dla xchat
+Summary(pl.UTF-8):	Wtyczka dla xchat
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
 Provides:	%{name}-plugin-xchat
@@ -53,7 +53,7 @@ Wtczka dla klienta IRC xchat.
 
 %package alc
 Summary:	Ed2k link creator for aMule
-Summary(pl.UTF-8):   Kreator linków ed2k dla aMule
+Summary(pl.UTF-8):	Kreator linków ed2k dla aMule
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
 Provides:	alc
@@ -66,7 +66,7 @@ Narzędzie do tworzenia linków ed2k.
 
 %package cas
 Summary:	aMule online stats
-Summary(pl.UTF-8):   Statystyki online aMule
+Summary(pl.UTF-8):	Statystyki online aMule
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
 Provides:	cas
