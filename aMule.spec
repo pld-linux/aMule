@@ -1,22 +1,21 @@
 Summary:	Unix port of eMule client
 Summary(pl.UTF-8):	Uniksowy port klienta eMule
 Name:		aMule
-Version:	2.1.3
-Release:	27
+Version:	2.2.1
+Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://download.berlios.de/amule/%{name}-%{version}.tar.bz2
-# Source0-md5:	0aafdd159edb8ad5f0064da87998b47d
-Patch0:		%{name}-configure_in.patch
-Patch1:		%{name}-desktop.patch
-Patch2:		%{name}-cas-datadir.patch
-Patch3:		%{name}-wx.patch
+# Source0-md5:	bfa8237e9682fd9d6fce72e152276f49
+Patch0:		%{name}-desktop.patch
+Patch1:		%{name}-cas-datadir.patch
 URL:		http://www.amule.org/
+BuildRequires:	GeoIP-devel
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.7.3
 BuildRequires:	binutils-devel
 BuildRequires:	bison
-#BuildRequires:	cryptopp-devel >= 5.1
+BuildRequires:	cryptopp-devel >= 5.1
 BuildRequires:	curl-devel >= 7.9.7
 BuildRequires:	expat-devel
 BuildRequires:	gd-devel
@@ -81,11 +80,8 @@ Narzędzie do generownia statystyk aMule.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
 
 %build
-%{__gettextize}
 %{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
@@ -104,7 +100,8 @@ Narzędzie do generownia statystyk aMule.
 	--enable-wxcas					\
 	--enable-alc					\
 	--enable-alcc					\
-	--enable-kad-compile
+	--enable-kad-compile				\
+	--enable-geoip
 
 %{__make}
 
@@ -130,8 +127,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/ed2k
 %dir %{_datadir}/amule
 %{_datadir}/amule/webserver
+%{_datadir}/amule/skins
 %{_desktopdir}/amule.desktop
+%{_desktopdir}/amulegui.desktop
 %{_pixmapsdir}/amule.xpm
+%{_pixmapsdir}/amulegui.xpm
 %{_mandir}/man1/amule*
 %{_mandir}/man1/ed2k*
 %{_mandir}/man1/xas*
