@@ -1,12 +1,12 @@
 Summary:	Unix port of eMule client
 Summary(pl.UTF-8):	Uniksowy port klienta eMule
 Name:		aMule
-Version:	2.2.2
-Release:	5
+Version:	2.2.3
+Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://download.berlios.de/amule/%{name}-%{version}.tar.bz2
-# Source0-md5:	4bbb5fef3b7acd206c08beddb7fdbb42
+# Source0-md5:	64a0d41edbdd7cf36fa892e45a652bfd
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-cas-datadir.patch
 URL:		http://www.amule.org/
@@ -93,16 +93,12 @@ Narzędzie do generownia statystyk aMule.
 	--enable-amule-daemon				\
 	--enable-amule-gui				\
 	--enable-amulecmd				\
-	--enable-amulecmdgui				\
 	--enable-webserver				\
-	--enable-webservergui				\
 	--enable-cas					\
 	--enable-wxcas					\
 	--enable-alc					\
 	--enable-alcc					\
-	--enable-kad-compile				\
 	--enable-geoip
-
 %{__make}
 
 %install
@@ -114,7 +110,8 @@ rm -rf $RPM_BUILD_ROOT
 mv -f $RPM_BUILD_ROOT%{_datadir}/locale/et{_EE,}
 mv -f $RPM_BUILD_ROOT%{_datadir}/locale/ko{_KR,}
 mv -f $RPM_BUILD_ROOT%{_datadir}/locale/pt{_PT,}
-
+rm -fr $RPM_BUILD_ROOT%{_docdir}/amule
+rm -fr $RPM_BUILD_ROOT%{_mandir}/eu
 %find_lang amule
 
 %clean
@@ -122,7 +119,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f amule.lang
 %defattr(644,root,root,755)
-%doc docs/AUTHORS docs/README docs/Changelog docs/ED2K-Links.HOWTO docs/TODO docs/amulesig.txt
+%doc docs/AUTHORS docs/EC_Protocol.txt docs/README docs/Changelog docs/ED2K-Links.HOWTO docs/TODO docs/amulesig.txt
+%attr(755,root,root) %{_bindir}/autostart-xas
 %attr(755,root,root) %{_bindir}/amule*
 %attr(755,root,root) %{_bindir}/ed2k
 %dir %{_datadir}/amule
