@@ -1,12 +1,12 @@
 Summary:	Unix port of eMule client
 Summary(pl.UTF-8):	Uniksowy port klienta eMule
 Name:		aMule
-Version:	2.2.4
+Version:	2.2.5
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://download.berlios.de/amule/%{name}-%{version}.tar.bz2
-# Source0-md5:	283c428dd2961a57f2691c455c845a42
+# Source0-md5:	d26048f8e00a1ca801b3b41156b4268d
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-cas-datadir.patch
 URL:		http://www.amule.org/
@@ -19,8 +19,8 @@ BuildRequires:	cryptopp-devel >= 5.1
 BuildRequires:	curl-devel >= 7.9.7
 BuildRequires:	expat-devel
 BuildRequires:	gd-devel
-BuildRequires:	gettext-devel >= 0.11.5
 BuildRequires:	gettext-autopoint
+BuildRequires:	gettext-devel >= 0.11.5
 BuildRequires:	gtk+2-devel >= 2:2.2.0
 BuildRequires:	libpng-devel
 BuildRequires:	libstdc++-devel
@@ -106,6 +106,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+install src/utils/xas/xas.pl $RPM_BUILD_ROOT%{_libdir}/xchat/plugins
+install {amule.desktop,amulegui.desktop,src/utils/aLinkCreator/alc.desktop,src/utils/wxCas/wxcas.desktop} $RPM_BUILD_ROOT%{_desktopdir}
+install {amule.xpm,amulegui.xpm,src/utils/aLinkCreator/alc.xpm,src/utils/wxCas/wxcas.xpm} $RPM_BUILD_ROOT%{_pixmapsdir}
 
 mv -f $RPM_BUILD_ROOT%{_datadir}/locale/et{_EE,}
 mv -f $RPM_BUILD_ROOT%{_datadir}/locale/ko{_KR,}
