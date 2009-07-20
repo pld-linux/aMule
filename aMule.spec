@@ -2,7 +2,7 @@ Summary:	Unix port of eMule client
 Summary(pl.UTF-8):	Uniksowy port klienta eMule
 Name:		aMule
 Version:	2.2.5
-Release:	2
+Release:	3
 License:	GPL
 Group:		X11/Applications
 Source0:	http://download.berlios.de/amule/%{name}-%{version}.tar.bz2
@@ -12,7 +12,8 @@ Patch1:		%{name}-cas-datadir.patch
 URL:		http://www.amule.org/
 BuildRequires:	GeoIP-devel
 BuildRequires:	autoconf
-BuildRequires:	automake >= 1:1.7.3
+BuildRequires:	automake < 1:1.11
+BuildRequires:	automake > 1:1.9
 BuildRequires:	binutils-devel
 BuildRequires:	bison
 BuildRequires:	cryptopp-devel >= 5.1
