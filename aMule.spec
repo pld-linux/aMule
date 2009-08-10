@@ -12,8 +12,7 @@ Patch1:		%{name}-cas-datadir.patch
 URL:		http://www.amule.org/
 BuildRequires:	GeoIP-devel
 BuildRequires:	autoconf
-BuildRequires:	automake < 1:1.11
-BuildRequires:	automake > 1:1.9
+BuildRequires:	automake >= 1:1.7.3
 BuildRequires:	binutils-devel
 BuildRequires:	bison
 BuildRequires:	cryptopp-devel >= 5.1
