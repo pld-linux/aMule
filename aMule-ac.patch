@@ -1,0 +1,24 @@
+diff -Nur aMule-2.2.5-orig/configure.in aMule-2.2.5/configure.in
+--- aMule-2.2.5-orig/configure.in	2009-05-16 09:38:01.000000000 +0200
++++ aMule-2.2.5/configure.in	2009-09-18 20:01:47.000000000 +0200
+@@ -538,7 +538,7 @@
+ AS_IF([test -n "$with_libupnp_prefix"], [libupnp_place=" (in $with_libupnp_prefix)"])
+ AS_IF([test x${ENABLE_UPNP} = xyes], [dnl
+ echo "                                       libupnp               ${LIBUPNP_VERSION:-Not detected}${libupnp_place:-}"
+-])dnl
++])
+ if test x${WEB:-no} != xno; then
+ AS_IF([test $regex_found = no], 
+ 	[regex_found="Not detected"],
+diff -Nur aMule-2.2.5-orig/m4/libupnp.m4 aMule-2.2.5/m4/libupnp.m4
+--- aMule-2.2.5-orig/m4/libupnp.m4	2009-03-28 20:29:59.000000000 +0100
++++ aMule-2.2.5/m4/libupnp.m4	2009-09-18 20:01:01.000000000 +0200
+@@ -76,7 +76,7 @@
+ 		], [dnl
+ 			result=no
+ 			resultstr=" (pkg-config not found)"
+-		])dnl
++		])
+ 		AC_MSG_RESULT([$result$resultstr])
+ 		libupnp_error="libupnp >= MIN_LIBUPNP_VERSION not found$resultstr"
+ 	], [dnl
