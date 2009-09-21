@@ -2,7 +2,7 @@ Summary:	Unix port of eMule client
 Summary(pl.UTF-8):	Uniksowy port klienta eMule
 Name:		aMule
 Version:	2.2.6
-Release:	0.1
+Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://download.berlios.de/amule/%{name}-%{version}.tar.bz2
@@ -101,6 +101,20 @@ Narzędzie do generownia statystyk aMule.
 	--enable-alc					\
 	--enable-alcc					\
 	--enable-geoip
+
+######################################################################################
+# UGLY UGLY BAD BAD BAD !!!!!
+# This should be fixable in another way
+sed -i -e 's#echo "$$d$$p">/dev/null;#echo "$$d$$p";#' src/skins/Makefile
+sed -i -e 's#echo "$$d$$p">/dev/null;#echo "$$d$$p";#' src/webserver/litoral/Makefile
+sed -i -e 's#echo "$$d$$p">/dev/null;#echo "$$d$$p";#' src/webserver/chicane/Makefile
+sed -i -e 's#echo "$$d$$p">/dev/null;#echo "$$d$$p";#' src/webserver/default/Makefile
+sed -i -e 's#echo "$$d$$p">/dev/null;#echo "$$d$$p";#' src/webserver/php-default/Makefile
+sed -i -e 's#echo "$$d$$p">/dev/null;#echo "$$d$$p";#' src/utils/cas/Makefile
+sed -i -e 's#echo "$$d$$p">/dev/null;#echo "$$d$$p";#' src/utils/aLinkCreator/Makefile
+sed -i -e 's#echo "$$d$$p">/dev/null;#echo "$$d$$p";#' src/utils/xas/Makefile
+sed -i -e 's#echo "$$d$$p">/dev/null;#echo "$$d$$p";#' src/utils/wxCas/Makefile
+######################################################################################
 %{__make}
 
 %install
@@ -150,6 +164,8 @@ rm -rf $RPM_BUILD_ROOT
 %lang(hu) %{_mandir}/hu/man1/amule*
 %lang(hu) %{_mandir}/hu/man1/ed2k*
 %lang(hu) %{_mandir}/hu/man1/xas*
+%lang(it) %{_mandir}/it/man1/amule*
+%lang(it) %{_mandir}/it/man1/ed2k*
 
 %files plugin-xchat
 %defattr(644,root,root,755)
