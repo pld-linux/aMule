@@ -1,16 +1,15 @@
 Summary:	Unix port of eMule client
 Summary(pl.UTF-8):	Uniksowy port klienta eMule
 Name:		aMule
-Version:	2.2.6
-Release:	25
+Version:	2.3.1
+Release:	0.1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://download.berlios.de/amule/%{name}-%{version}.tar.bz2
-# Source0-md5:	530d9b48187e36f78fc21bb19e94326d
+Source0:	http://downloads.sourceforge.net/amule/%{name}-%{version}.tar.bz2
+# Source0-md5:	31724290a440943f5b05d4dca413fe02
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-cas-datadir.patch
 Patch2:		%{name}-ac.patch
-Patch3:		%{name}-build.patch
 URL:		http://www.amule.org/
 BuildRequires:	GeoIP-devel
 BuildRequires:	autoconf
@@ -24,7 +23,7 @@ BuildRequires:	gd-devel
 BuildRequires:	gettext-autopoint
 BuildRequires:	gettext-devel >= 0.11.5
 BuildRequires:	gtk+2-devel >= 2:2.2.0
-BuildRequires:	libpng-devel
+BuildRequires:	libpng-devel >= 1.2.0
 BuildRequires:	libstdc++-devel
 BuildRequires:	pkgconfig
 BuildRequires:	wxGTK2-unicode-devel
@@ -84,7 +83,6 @@ Narzędzie do generownia statystyk aMule.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 %build
 %{__aclocal} -I m4
@@ -93,6 +91,7 @@ Narzędzie do generownia statystyk aMule.
 %{__automake}
 %configure \
 	--with-wx-config=wx-gtk2-unicode-config		\
+	--with-libpng-config=/usr/bin/libpng-config	\
 	--%{?debug:en}%{!?debug:dis}able-debug		\
 	--%{?debug:dis}%{!?debug:en}able-optimize	\
 	--enable-amule-daemon				\
@@ -103,21 +102,10 @@ Narzędzie do generownia statystyk aMule.
 	--enable-wxcas					\
 	--enable-alc					\
 	--enable-alcc					\
-	--enable-geoip
+	--enable-geoip					\
+	--enable-xas					\
+	--enable-optimize
 
-######################################################################################
-# UGLY UGLY BAD BAD BAD !!!!!
-# This should be fixable in another way
-sed -i -e 's#echo "$$d$$p">/dev/null;#echo "$$d$$p";#' src/skins/Makefile
-sed -i -e 's#echo "$$d$$p">/dev/null;#echo "$$d$$p";#' src/webserver/litoral/Makefile
-sed -i -e 's#echo "$$d$$p">/dev/null;#echo "$$d$$p";#' src/webserver/chicane/Makefile
-sed -i -e 's#echo "$$d$$p">/dev/null;#echo "$$d$$p";#' src/webserver/default/Makefile
-sed -i -e 's#echo "$$d$$p">/dev/null;#echo "$$d$$p";#' src/webserver/php-default/Makefile
-sed -i -e 's#echo "$$d$$p">/dev/null;#echo "$$d$$p";#' src/utils/cas/Makefile
-sed -i -e 's#echo "$$d$$p">/dev/null;#echo "$$d$$p";#' src/utils/aLinkCreator/Makefile
-sed -i -e 's#echo "$$d$$p">/dev/null;#echo "$$d$$p";#' src/utils/xas/Makefile
-sed -i -e 's#echo "$$d$$p">/dev/null;#echo "$$d$$p";#' src/utils/wxCas/Makefile
-######################################################################################
 %{__make}
 
 %install
@@ -125,10 +113,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
-
-install src/utils/xas/xas.pl $RPM_BUILD_ROOT%{_libdir}/xchat/plugins
-install {amule.desktop,amulegui.desktop,src/utils/aLinkCreator/alc.desktop,src/utils/wxCas/wxcas.desktop} $RPM_BUILD_ROOT%{_desktopdir}
-install {amule.xpm,amulegui.xpm,src/utils/aLinkCreator/alc.xpm,src/utils/wxCas/wxcas.xpm} $RPM_BUILD_ROOT%{_pixmapsdir}
 
 mv -f $RPM_BUILD_ROOT%{_datadir}/locale/et{_EE,}
 mv -f $RPM_BUILD_ROOT%{_datadir}/locale/ko{_KR,}
@@ -142,7 +126,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f amule.lang
 %defattr(644,root,root,755)
-%doc docs/AUTHORS docs/EC_Protocol.txt docs/README docs/Changelog docs/ED2K-Links.HOWTO docs/TODO docs/amulesig.txt
+%doc docs/ABOUT-NLS docs/AUTHORS docs/Changelog docs/EC_Protocol.txt docs/README docs/TODO docs/amulesig.txt
 %attr(755,root,root) %{_bindir}/autostart-xas
 %attr(755,root,root) %{_bindir}/amule*
 %attr(755,root,root) %{_bindir}/ed2k
@@ -155,24 +139,32 @@ rm -rf $RPM_BUILD_ROOT
 %{_pixmapsdir}/amulegui.xpm
 %{_mandir}/man1/amule*
 %{_mandir}/man1/ed2k*
-%{_mandir}/man1/xas*
 %lang(de) %{_mandir}/de/man1/amule*
 %lang(de) %{_mandir}/de/man1/ed2k*
-%lang(de) %{_mandir}/de/man1/xas*
 %lang(es) %{_mandir}/es/man1/amule*
 %lang(es) %{_mandir}/es/man1/ed2k*
-%lang(es) %{_mandir}/es/man1/xas*
 %lang(fr) %{_mandir}/fr/man1/amule*
 %lang(fr) %{_mandir}/fr/man1/ed2k*
 %lang(hu) %{_mandir}/hu/man1/amule*
 %lang(hu) %{_mandir}/hu/man1/ed2k*
-%lang(hu) %{_mandir}/hu/man1/xas*
 %lang(it) %{_mandir}/it/man1/amule*
 %lang(it) %{_mandir}/it/man1/ed2k*
+%lang(ru) %{_mandir}/ru/man1/amule*
+%lang(ru) %{_mandir}/ru/man1/ed2k*
+%lang(tr) %{_mandir}/tr/man1/amule*
+%lang(tr) %{_mandir}/tr/man1/ed2k*
 
 %files plugin-xchat
 %defattr(644,root,root,755)
 %{_libdir}/xchat/plugins/xas.pl
+%{_mandir}/man1/xas*
+%lang(de) %{_mandir}/de/man1/xas*
+%lang(es) %{_mandir}/es/man1/xas*
+%lang(fr) %{_mandir}/fr/man1/xas*
+%lang(hu) %{_mandir}/hu/man1/xas*
+%lang(it) %{_mandir}/it/man1/xas*
+%lang(ru) %{_mandir}/ru/man1/xas*
+%lang(tr) %{_mandir}/tr/man1/xas*
 
 %files alc
 %defattr(644,root,root,755)
@@ -184,6 +176,9 @@ rm -rf $RPM_BUILD_ROOT
 %lang(es) %{_mandir}/es/man1/alc*
 %lang(fr) %{_mandir}/fr/man1/alc*
 %lang(hu) %{_mandir}/hu/man1/alc*
+%lang(it) %{_mandir}/it/man1/alc*
+%lang(ru) %{_mandir}/ru/man1/alc*
+%lang(tr) %{_mandir}/tr/man1/alc*
 
 %files cas
 %defattr(644,root,root,755)
@@ -194,4 +189,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*cas*
 %lang(de) %{_mandir}/de/man1/*cas*
 %lang(es) %{_mandir}/es/man1/*cas*
+%lang(fr) %{_mandir}/fr/man1/*cas*
 %lang(hu) %{_mandir}/hu/man1/*cas*
+%lang(it) %{_mandir}/it/man1/*cas*
+%lang(ru) %{_mandir}/ru/man1/*cas*
+%lang(tr) %{_mandir}/tr/man1/*cas*
