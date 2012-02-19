@@ -26,7 +26,7 @@ BuildRequires:	gtk+2-devel >= 2:2.2.0
 BuildRequires:	libpng-devel >= 1.2.0
 BuildRequires:	libstdc++-devel
 BuildRequires:	pkgconfig
-BuildRequires:	wxGTK2-unicode-devel
+BuildRequires:	wxGTK2-unicode-devel >= 2.8.12
 BuildRequires:	xorg-lib-libXpm-devel
 Requires:	wget
 Obsoletes:	lmule
