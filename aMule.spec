@@ -1,8 +1,11 @@
+#
+# TODO: ./configure --enable-plasmamule
+#
 Summary:	Unix port of eMule client
 Summary(pl.UTF-8):	Uniksowy port klienta eMule
 Name:		aMule
 Version:	2.3.1
-Release:	5
+Release:	6
 License:	GPL
 Group:		X11/Applications
 Source0:	http://downloads.sourceforge.net/amule/%{name}-%{version}.tar.bz2
@@ -10,6 +13,7 @@ Source0:	http://downloads.sourceforge.net/amule/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-cas-datadir.patch
 Patch2:		%{name}-ac.patch
+Patch3:		%{name}-cxx.patch
 URL:		http://www.amule.org/
 BuildRequires:	GeoIP-devel
 BuildRequires:	autoconf
@@ -83,6 +87,7 @@ Narzędzie do generownia statystyk aMule.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 %{__aclocal} -I m4
