@@ -5,7 +5,7 @@ Summary:	Unix port of eMule client
 Summary(pl.UTF-8):	Uniksowy port klienta eMule
 Name:		aMule
 Version:	2.3.1
-Release:	25
+Release:	26
 License:	GPL
 Group:		X11/Applications
 Source0:	http://downloads.sourceforge.net/amule/%{name}-%{version}.tar.bz2
@@ -127,7 +127,6 @@ rm -rf $RPM_BUILD_ROOT
 %{__mv} $RPM_BUILD_ROOT%{_datadir}/locale/ko{_KR,}
 %{__mv} $RPM_BUILD_ROOT%{_datadir}/locale/pt{_PT,}
 %{__rm} -r $RPM_BUILD_ROOT%{_docdir}/amule
-%{__rm} -r $RPM_BUILD_ROOT%{_mandir}/eu
 %find_lang amule
 
 %clean
