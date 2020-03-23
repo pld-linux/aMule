@@ -5,7 +5,7 @@ Summary:	Unix port of eMule client
 Summary(pl.UTF-8):	Uniksowy port klienta eMule
 Name:		aMule
 Version:	2.3.2
-Release:	9
+Release:	10
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://downloads.sourceforge.net/amule/%{name}-%{version}.tar.bz2
@@ -14,6 +14,7 @@ Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-cas-datadir.patch
 Patch2:		%{name}-ac.patch
 Patch3:		%{name}-cryptopp.patch
+Patch4:		binutils-2.34.patch
 URL:		http://www.amule.org/
 BuildRequires:	GeoIP-devel
 BuildRequires:	autoconf >= 2.59
@@ -96,6 +97,7 @@ Narzędzie do generownia statystyk aMule.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 %{__aclocal} -I m4
