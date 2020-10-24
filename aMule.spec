@@ -5,7 +5,7 @@ Summary:	Unix port of eMule client
 Summary(pl.UTF-8):	Uniksowy port klienta eMule
 Name:		aMule
 Version:	2.3.2
-Release:	13
+Release:	14
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://downloads.sourceforge.net/amule/%{name}-%{version}.tar.bz2
@@ -15,6 +15,7 @@ Patch1:		%{name}-cas-datadir.patch
 Patch2:		%{name}-ac.patch
 Patch3:		%{name}-cryptopp.patch
 Patch4:		binutils-2.34.patch
+Patch5:		libupnp-1.14.patch
 URL:		http://www.amule.org/
 BuildRequires:	GeoIP-devel
 BuildRequires:	autoconf >= 2.59
@@ -31,7 +32,7 @@ BuildRequires:	gettext-tools >= 0.11.5
 BuildRequires:	gtk+2-devel >= 2:2.2.0
 BuildRequires:	libpng-devel >= 1.2.0
 BuildRequires:	libstdc++-devel
-BuildRequires:	libupnp1.6-devel >= 1.6.6
+BuildRequires:	libupnp-devel >= 1.6.6
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	readline-devel
 BuildRequires:	wxGTK2-unicode-devel >= 2.8.12
@@ -39,7 +40,7 @@ BuildRequires:	xorg-lib-libXpm-devel
 BuildRequires:	zlib-devel >= 1.1.4
 Requires:	cryptopp >= 5.1
 Requires:	gd >= 2.0.0
-Requires:	libupnp1.6 >= 1.6.6
+Requires:	libupnp >= 1.6.6
 Requires:	wget
 Requires:	zlib >= 1.1.4
 Obsoletes:	lmule
@@ -98,6 +99,7 @@ Narzędzie do generownia statystyk aMule.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 %{__aclocal} -I m4
