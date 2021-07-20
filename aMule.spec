@@ -106,6 +106,7 @@ Narzędzie do generownia statystyk aMule.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
+export CXXFLAGS="%{rpmcxxflags} -std=gnu++14"
 %configure \
 	--with-denoise-level=1				\
 	--with-libpng-config=/usr/bin/libpng-config	\
