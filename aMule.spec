@@ -4,18 +4,15 @@
 Summary:	Unix port of eMule client
 Summary(pl.UTF-8):	Uniksowy port klienta eMule
 Name:		aMule
-Version:	2.3.2
-Release:	22
+Version:	2.3.3
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://downloads.sourceforge.net/amule/%{name}-%{version}.tar.bz2
-# Source0-md5:	4516bde73327e6153c140cef59375f38
+# Source0-md5:	d74947f4c35bbea71369f6c112b9f0b8
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-cas-datadir.patch
 Patch2:		%{name}-ac.patch
-Patch3:		%{name}-cryptopp.patch
-Patch4:		binutils-2.34.patch
-Patch5:		libupnp-1.14.patch
 URL:		http://www.amule.org/
 BuildRequires:	GeoIP-devel
 BuildRequires:	autoconf >= 2.59
@@ -29,13 +26,13 @@ BuildRequires:	expat-devel
 BuildRequires:	flex
 BuildRequires:	gd-devel >= 2.0.0
 BuildRequires:	gettext-tools >= 0.11.5
-BuildRequires:	gtk+2-devel >= 2:2.2.0
+BuildRequires:	gtk+3-devel
 BuildRequires:	libpng-devel >= 1.2.0
 BuildRequires:	libstdc++-devel
 BuildRequires:	libupnp-devel >= 1.6.6
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	readline-devel
-BuildRequires:	wxGTK2-unicode-devel >= 2.8.12
+BuildRequires:	wxGTK3-unicode-devel >= 2.8.12
 BuildRequires:	xorg-lib-libXpm-devel
 BuildRequires:	zlib-devel >= 1.1.4
 Requires:	cryptopp >= 5.1
@@ -97,9 +94,6 @@ Narzędzie do generownia statystyk aMule.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
 
 %build
 %{__aclocal} -I m4
@@ -110,7 +104,7 @@ export CXXFLAGS="%{rpmcxxflags} -std=gnu++14"
 %configure \
 	--with-denoise-level=1				\
 	--with-libpng-config=/usr/bin/libpng-config	\
-	--with-wx-config=wx-gtk2-unicode-config		\
+	--with-wx-config=wx-gtk3-unicode-config		\
 	--enable-alc					\
 	--enable-alcc					\
 	--enable-amulecmd				\

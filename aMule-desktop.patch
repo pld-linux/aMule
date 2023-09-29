@@ -1,17 +1,14 @@
 diff -urN aMule-2.1.3/amule.desktop aMule-2.1.3.new/amule.desktop
 --- aMule-2.1.3/amule.desktop	2005-12-14 05:12:44.000000000 +0100
 +++ aMule-2.1.3.new/amule.desktop	2006-06-17 13:52:51.000000000 +0200
-@@ -1,10 +1,12 @@
- [Desktop Entry]
- Name=aMule
-+Comment=Linux port of eMule client
-+Comment[pl]=Linuksowy port klienta eMule
- Exec=amule
+@@ -3,8 +3,9 @@
  Icon=amule
  Terminal=false
  Type=Application
 -Categories=Network;P2P;
 +Categories=GTK;Network;P2P;
  Comment=A client for the eD2k network
++Comment[pl]=Klient sieci eD2k
  Comment[fr]=Un client pour le réseau eD2k
  Comment[tr]=eD2k ağı için istemci
+ Comment[zh_CN]=eD2k网络客户端
