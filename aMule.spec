@@ -5,7 +5,7 @@ Summary:	Unix port of eMule client
 Summary(pl.UTF-8):	Uniksowy port klienta eMule
 Name:		aMule
 Version:	2.3.3
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://downloads.sourceforge.net/amule/%{name}-%{version}.tar.bz2
@@ -42,6 +42,7 @@ Requires:	wget
 Requires:	zlib >= 1.1.4
 Obsoletes:	lmule
 Obsoletes:	xmule
+Obsoletes:	aMule-plugin-xchat < 2.3.3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -49,19 +50,6 @@ aMule is a Linux port of eMule client.
 
 %description -l pl.UTF-8
 aMule to linuksowy port klienta eMule.
-
-%package plugin-xchat
-Summary:	Xchat plugin
-Summary(pl.UTF-8):	Wtyczka dla xchat
-Group:		X11/Applications
-Requires:	%{name} = %{version}-%{release}
-Provides:	%{name}-plugin-xchat
-
-%description plugin-xchat
-Plugin for Xchat IRC client.
-
-%description plugin-xchat -l pl.UTF-8
-Wtyczka dla klienta IRC xchat.
 
 %package alc
 Summary:	Ed2k link creator for aMule
@@ -116,7 +104,7 @@ export CXXFLAGS="%{rpmcxxflags} -std=gnu++14"
 	--enable-optimize%{!?debug:=no}			\
 	--enable-webserver				\
 	--enable-wxcas					\
-	--enable-xas
+	--disable-xas
 
 %{__make}
 
@@ -138,7 +126,6 @@ rm -rf $RPM_BUILD_ROOT
 %files -f amule.lang
 %defattr(644,root,root,755)
 %doc docs/ABOUT-NLS docs/AUTHORS docs/Changelog docs/EC_Protocol.txt docs/README docs/TODO docs/amulesig.txt
-%attr(755,root,root) %{_bindir}/autostart-xas
 %attr(755,root,root) %{_bindir}/amule*
 %attr(755,root,root) %{_bindir}/ed2k
 %dir %{_datadir}/amule
@@ -168,20 +155,6 @@ rm -rf $RPM_BUILD_ROOT
 %lang(tr) %{_mandir}/tr/man1/ed2k.1*
 %lang(zh_TW) %{_mandir}/zh_TW/man1/amule*.1*
 %lang(zh_TW) %{_mandir}/zh_TW/man1/ed2k.1*
-
-%files plugin-xchat
-%defattr(644,root,root,755)
-%{_libdir}/xchat/plugins/xas.pl
-%{_mandir}/man1/xas.1*
-%lang(de) %{_mandir}/de/man1/xas.1*
-%lang(es) %{_mandir}/es/man1/xas.1*
-%lang(fr) %{_mandir}/fr/man1/xas.1*
-%lang(hu) %{_mandir}/hu/man1/xas.1*
-%lang(it) %{_mandir}/it/man1/xas.1*
-%lang(ro) %{_mandir}/ro/man1/xas.1*
-%lang(ru) %{_mandir}/ru/man1/xas.1*
-%lang(tr) %{_mandir}/tr/man1/xas.1*
-%lang(zh_TW) %{_mandir}/zh_TW/man1/xas.1*
 
 %files alc
 %defattr(644,root,root,755)
