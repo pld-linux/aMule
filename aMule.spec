@@ -1,45 +1,34 @@
-#
-# TODO: ./configure --enable-plasmamule (BR: qt4-build, QtCore 4, KDE 4)
-#
 Summary:	Unix port of eMule client
 Summary(pl.UTF-8):	Uniksowy port klienta eMule
 Name:		aMule
-Version:	2.3.3
-Release:	7
+Version:	3.0.1
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://downloads.sourceforge.net/amule/%{name}-%{version}.tar.bz2
-# Source0-md5:	d74947f4c35bbea71369f6c112b9f0b8
+Source0:	https://github.com/amule-org/amule/releases/download/%{version}/%{name}-%{version}-src.tar.gz
+# Source0-md5:	9dd76690485bf002608ced039294b335
 Patch0:		%{name}-desktop.patch
-Patch1:		%{name}-cas-datadir.patch
-Patch2:		%{name}-ac.patch
-URL:		http://www.amule.org/
-BuildRequires:	GeoIP-devel
-BuildRequires:	autoconf >= 2.59
-BuildRequires:	automake >= 1:1.7.3
+URL:		https://amule-org.github.io/
 BuildRequires:	binutils-devel
 BuildRequires:	bison
-BuildRequires:	boost-devel >= 1.47
-BuildRequires:	cryptopp-devel >= 5.1
-BuildRequires:	curl-devel >= 7.9.7
-BuildRequires:	expat-devel
+BuildRequires:	boost-devel >= 1.70
+BuildRequires:	cmake >= 3.10
+BuildRequires:	cryptopp-devel >= 5.6
+BuildRequires:	curl-devel
 BuildRequires:	flex
 BuildRequires:	gd-devel >= 2.0.0
-BuildRequires:	gettext-tools >= 0.11.5
-BuildRequires:	gtk+3-devel
-BuildRequires:	libpng-devel >= 1.2.0
+BuildRequires:	gettext-tools
+BuildRequires:	glib2-devel
+BuildRequires:	libayatana-appindicator-gtk3-devel
+BuildRequires:	libmaxminddb-devel
+BuildRequires:	libpng-devel
 BuildRequires:	libstdc++-devel
-BuildRequires:	libupnp-devel >= 1.6.6
+BuildRequires:	libupnp-devel
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	readline-devel
-BuildRequires:	wxGTK3-unicode-devel >= 2.8.12
-BuildRequires:	xorg-lib-libXpm-devel
-BuildRequires:	zlib-devel >= 1.1.4
-Requires:	cryptopp >= 5.1
-Requires:	gd >= 2.0.0
-Requires:	libupnp >= 1.6.6
-Requires:	wget
-Requires:	zlib >= 1.1.4
+BuildRequires:	wxGTK3-unicode-devel >= 3.2.0
+BuildRequires:	zlib-devel
+Requires:	hicolor-icon-theme
 Obsoletes:	lmule
 Obsoletes:	xmule
 Obsoletes:	aMule-plugin-xchat < 2.3.3
@@ -80,61 +69,72 @@ Narzędzie do generownia statystyk aMule.
 %prep
 %setup -q
 %patch -P0 -p1
-%patch -P1 -p1
-%patch -P2 -p1
+
+# the release tarball ships .git_archival.txt with unexpanded $Format: keywords,
+# so cmake falls back to PACKAGE_VERSION="GIT"; hand it the real tag instead
+echo "describe-name: %{version}" > .git_archival.txt
 
 %build
-%{__aclocal} -I m4
-%{__autoconf}
-%{__autoheader}
-%{__automake}
-export CXXFLAGS="%{rpmcxxflags} -std=gnu++14"
-%configure \
-	--with-denoise-level=1				\
-	--with-libpng-config=/usr/bin/libpng-config	\
-	--with-wx-config=wx-gtk3-unicode-config		\
-	--enable-alc					\
-	--enable-alcc					\
-	--enable-amulecmd				\
-	--enable-amule-daemon				\
-	--enable-amule-gui				\
-	--enable-cas					\
-	--enable-debug%{!?debug:=no}			\
-	--enable-geoip					\
-	--enable-optimize%{!?debug:=no}			\
-	--enable-webserver				\
-	--enable-wxcas					\
-	--disable-xas
+%cmake -B build \
+	-DCMAKE_INSTALL_DOCDIR=%{_docdir}/%{name}-%{version} \
+	-DBUILD_ALC=ON \
+	-DBUILD_ALCC=ON \
+	-DBUILD_AMULECMD=ON \
+	-DBUILD_CAS=ON \
+	-DBUILD_DAEMON=ON \
+	-DBUILD_ED2K=ON \
+	-DBUILD_FILEVIEW=OFF \
+	-DBUILD_MONOLITHIC=ON \
+	-DBUILD_REMOTEGUI=ON \
+	-DBUILD_WEBSERVER=ON \
+	-DBUILD_WXCAS=ON \
+	-DDEFAULT_VERSION_CHECK=OFF \
+	-DENABLE_BFD=ON \
+	-DENABLE_CCACHE=OFF \
+	-DENABLE_IP2COUNTRY=ON \
+	-DENABLE_NLS=ON \
+	-DENABLE_UPNP=ON \
+	-DTRANSLATED_MANPAGES=OFF \
+	-DwxWidgets_CONFIG_EXECUTABLE=%{_bindir}/wx-gtk3-unicode-config
 
-%{__make}
+%{__make} -C build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
+%{__make} -C build install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 %{__mv} $RPM_BUILD_ROOT%{_datadir}/locale/et{_EE,}
 %{__mv} $RPM_BUILD_ROOT%{_datadir}/locale/ko{_KR,}
 %{__mv} $RPM_BUILD_ROOT%{_datadir}/locale/pt{_PT,}
-%{__rm} -r $RPM_BUILD_ROOT%{_docdir}/amule
 %find_lang amule
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post
+%update_desktop_database
+%update_icon_cache hicolor
+
+%postun
+%update_desktop_database
+%update_icon_cache hicolor
+
 %files -f amule.lang
 %defattr(644,root,root,755)
-%doc docs/ABOUT-NLS docs/AUTHORS docs/Changelog docs/EC_Protocol.txt docs/README docs/TODO docs/amulesig.txt
+%doc %{_docdir}/%{name}-%{version}
 %attr(755,root,root) %{_bindir}/amule*
 %attr(755,root,root) %{_bindir}/ed2k
 %dir %{_datadir}/amule
 %{_datadir}/amule/webserver
 %{_datadir}/amule/skins
-%{_desktopdir}/amule.desktop
-%{_desktopdir}/amulegui.desktop
-%{_pixmapsdir}/amule.xpm
-%{_pixmapsdir}/amulegui.xpm
+%{_desktopdir}/org.amule.aMule.desktop
+%{_desktopdir}/org.amule.aMule.gui.desktop
+%{_datadir}/metainfo/org.amule.aMule.metainfo.xml
+%{_iconsdir}/hicolor/128x128/apps/org.amule.aMule.png
+%{_iconsdir}/hicolor/256x256/apps/org.amule.aMule.png
+%{_pixmapsdir}/org.amule.aMule.png
 %{_mandir}/man1/amule*.1*
 %{_mandir}/man1/ed2k.1*
 %lang(de) %{_mandir}/de/man1/amule*.1*
@@ -147,6 +147,8 @@ rm -rf $RPM_BUILD_ROOT
 %lang(hu) %{_mandir}/hu/man1/ed2k.1*
 %lang(it) %{_mandir}/it/man1/amule*.1*
 %lang(it) %{_mandir}/it/man1/ed2k.1*
+%lang(pt_BR) %{_mandir}/pt_BR/man1/amule*.1*
+%lang(pt_BR) %{_mandir}/pt_BR/man1/ed2k.1*
 %lang(ro) %{_mandir}/ro/man1/amule*.1*
 %lang(ro) %{_mandir}/ro/man1/ed2k.1*
 %lang(ru) %{_mandir}/ru/man1/amule*.1*
@@ -174,6 +176,8 @@ rm -rf $RPM_BUILD_ROOT
 %lang(hu) %{_mandir}/hu/man1/alcc.1*
 %lang(it) %{_mandir}/it/man1/alc.1*
 %lang(it) %{_mandir}/it/man1/alcc.1*
+%lang(pt_BR) %{_mandir}/pt_BR/man1/alc.1*
+%lang(pt_BR) %{_mandir}/pt_BR/man1/alcc.1*
 %lang(ro) %{_mandir}/ro/man1/alc.1*
 %lang(ro) %{_mandir}/ro/man1/alcc.1*
 %lang(ru) %{_mandir}/ru/man1/alc.1*
@@ -187,13 +191,13 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/cas
 %attr(755,root,root) %{_bindir}/wxcas
-%{_datadir}/amule/cas
+%{_datadir}/cas
 %{_desktopdir}/wxcas.desktop
 %{_pixmapsdir}/wxcas.xpm
 %{_mandir}/man1/cas.1*
 %{_mandir}/man1/wxcas.1*
 %lang(de) %{_mandir}/de/man1/cas.1*
-%lang(de) %{_mandir}/de/man1/wx*cas.1*
+%lang(de) %{_mandir}/de/man1/wxcas.1*
 %lang(es) %{_mandir}/es/man1/cas.1*
 %lang(es) %{_mandir}/es/man1/wxcas.1*
 %lang(fr) %{_mandir}/fr/man1/cas.1*
@@ -202,6 +206,8 @@ rm -rf $RPM_BUILD_ROOT
 %lang(hu) %{_mandir}/hu/man1/wxcas.1*
 %lang(it) %{_mandir}/it/man1/cas.1*
 %lang(it) %{_mandir}/it/man1/wxcas.1*
+%lang(pt_BR) %{_mandir}/pt_BR/man1/cas.1*
+%lang(pt_BR) %{_mandir}/pt_BR/man1/wxcas.1*
 %lang(ro) %{_mandir}/ro/man1/cas.1*
 %lang(ro) %{_mandir}/ro/man1/wxcas.1*
 %lang(ru) %{_mandir}/ru/man1/cas.1*
