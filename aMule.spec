@@ -18,7 +18,7 @@ BuildRequires:	curl-devel
 BuildRequires:	flex
 BuildRequires:	gd-devel >= 2.0.0
 BuildRequires:	gettext-tools
-BuildRequires:	glib2-devel
+BuildRequires:	glib2-devel >= 2.0
 BuildRequires:	libayatana-appindicator-gtk3-devel
 BuildRequires:	libmaxminddb-devel
 BuildRequires:	libpng-devel
@@ -28,6 +28,8 @@ BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	readline-devel
 BuildRequires:	wxGTK3-unicode-devel >= 3.2.0
 BuildRequires:	zlib-devel
+Requires(post,postun):	desktop-file-utils
+Requires(post,postun):	gtk-update-icon-theme
 Requires:	hicolor-icon-theme
 Obsoletes:	lmule
 Obsoletes:	xmule
