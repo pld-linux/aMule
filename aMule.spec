@@ -12,7 +12,7 @@ URL:		https://amule-org.github.io/
 BuildRequires:	binutils-devel
 BuildRequires:	bison
 BuildRequires:	boost-devel >= 1.70
-BuildRequires:	cmake >= 3.10
+BuildRequires:	cmake >= 3.13
 BuildRequires:	cryptopp-devel >= 5.6
 BuildRequires:	curl-devel
 BuildRequires:	flex
